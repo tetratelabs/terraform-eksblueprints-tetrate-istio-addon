@@ -14,25 +14,25 @@ variable "distribution_version" {
 
 variable "install_base" {
   type        = bool
-  default     = false
+  default     = true
   description = "Install Istio `base` Helm Chart"
 }
 
 variable "install_cni" {
   type        = bool
-  default     = false
+  default     = true
   description = "Install Istio `cni` Helm Chart"
 }
 
 variable "install_istiod" {
   type        = bool
-  default     = false
+  default     = true
   description = "Install Istio `istiod` Helm Chart"
 }
 
 variable "install_gateway" {
   type        = bool
-  default     = false
+  default     = true
   description = "Install Istio `gateway` Helm Chart"
 }
 
