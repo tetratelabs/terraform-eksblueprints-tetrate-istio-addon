@@ -6,7 +6,7 @@
 
 ## Examples
 
-See [blueprints](./blueprints).
+See [blueprints](https://github.com/tetratelabs/terraform-eksblueprints-tetrate-istio-addon/tree/main/blueprints).
 
 <!--- BEGIN_TF_DOCS --->
 
