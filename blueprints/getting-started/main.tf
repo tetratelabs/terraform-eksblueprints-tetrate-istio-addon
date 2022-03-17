@@ -26,11 +26,11 @@ data "aws_region" "current" {}
 data "aws_availability_zones" "available" {}
 
 data "aws_eks_cluster" "cluster" {
-  name = module.aws-eks-accelerator-for-terraform.eks_cluster_id
+  name = module.aws_eks_accelerator_for_terraform.eks_cluster_id
 }
 
 data "aws_eks_cluster_auth" "cluster" {
-  name = module.aws-eks-accelerator-for-terraform.eks_cluster_id
+  name = module.aws_eks_accelerator_for_terraform.eks_cluster_id
 }
 
 provider "aws" {
@@ -43,7 +43,7 @@ provider "kubernetes" {
     manifest_resource = true
   }
   host                   = data.aws_eks_cluster.cluster.endpoint
-  cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
+  cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority[0].data)
   token                  = data.aws_eks_cluster_auth.cluster.token
 }
 
@@ -51,7 +51,7 @@ provider "helm" {
   kubernetes {
     host                   = data.aws_eks_cluster.cluster.endpoint
     token                  = data.aws_eks_cluster_auth.cluster.token
-    cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
+    cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority[0].data)
   }
 }
 
@@ -97,7 +97,7 @@ module "aws_vpc" {
 #---------------------------------------------------------------
 # Example to consume aws-eks-accelerator-for-terraform module
 #---------------------------------------------------------------
-module "aws-eks-accelerator-for-terraform" {
+module "aws_eks_accelerator_for_terraform" {
   source = "github.com/aws-samples/aws-eks-accelerator-for-terraform?ref=v3.5.0"
 
   tenant            = local.tenant
@@ -123,9 +123,9 @@ module "aws-eks-accelerator-for-terraform" {
   }
 }
 
-module "kubernetes-addons" {
+module "kubernetes_addons" {
   source         = "github.com/aws-samples/aws-eks-accelerator-for-terraform//modules/kubernetes-addons?ref=v3.5.0"
-  eks_cluster_id = module.aws-eks-accelerator-for-terraform.eks_cluster_id
+  eks_cluster_id = module.aws_eks_accelerator_for_terraform.eks_cluster_id
 
   # EKS Managed Add-ons
   enable_amazon_eks_vpc_cni    = true
@@ -139,5 +139,5 @@ module "kubernetes-addons" {
   # Tetrate Istio Add-on
   enable_tetrate_istio = true
 
-  depends_on = [module.aws-eks-accelerator-for-terraform.managed_node_groups]
+  depends_on = [module.aws_eks_accelerator_for_terraform.managed_node_groups]
 }
