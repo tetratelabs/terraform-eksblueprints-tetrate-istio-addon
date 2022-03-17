@@ -90,7 +90,7 @@ locals {
   gateway_helm_config = merge(
     local.default_helm_config,
     local.distribution_helm_config,
-    { name = "istio-ingress", chart = "gateway" },
+    { name = "istio-ingressgateway", chart = "gateway" },
     var.gateway_helm_config,
     { values = concat(local.default_gateway_helm_values, lookup(var.gateway_helm_config, "values", [])) }
   )
