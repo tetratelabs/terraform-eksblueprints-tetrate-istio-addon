@@ -4,6 +4,10 @@
 
 [Tetrate Istio Distro](https://istio.tetratelabs.io/) is simple, safe enterprise-grade Istio distro.
 
+## Examples
+
+See [blueprints](./blueprints).
+
 <!--- BEGIN_TF_DOCS --->
 
 ## Requirements
