@@ -2,7 +2,7 @@
 
 module "base" {
   count             = var.install_base ? 1 : 0
-  source            = "github.com/aws-samples/aws-eks-accelerator-for-terraform//modules/kubernetes-addons/helm-addon?ref=v3.5.0"
+  source            = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons/helm-addon?ref=v3.5.0"
   manage_via_gitops = var.manage_via_gitops
   helm_config       = local.base_helm_config
   irsa_config       = null
@@ -11,7 +11,7 @@ module "base" {
 
 module "cni" {
   count             = var.install_cni ? 1 : 0
-  source            = "github.com/aws-samples/aws-eks-accelerator-for-terraform//modules/kubernetes-addons/helm-addon?ref=v3.5.0"
+  source            = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons/helm-addon?ref=v3.5.0"
   manage_via_gitops = var.manage_via_gitops
   helm_config       = local.cni_helm_config
   irsa_config       = null
@@ -22,7 +22,7 @@ module "cni" {
 
 module "istiod" {
   count             = var.install_istiod ? 1 : 0
-  source            = "github.com/aws-samples/aws-eks-accelerator-for-terraform//modules/kubernetes-addons/helm-addon?ref=v3.5.0"
+  source            = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons/helm-addon?ref=v3.5.0"
   manage_via_gitops = var.manage_via_gitops
   helm_config       = local.istiod_helm_config
   irsa_config       = null
@@ -33,7 +33,7 @@ module "istiod" {
 
 module "gateway" {
   count             = var.install_gateway ? 1 : 0
-  source            = "github.com/aws-samples/aws-eks-accelerator-for-terraform//modules/kubernetes-addons/helm-addon?ref=v3.5.0"
+  source            = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons/helm-addon?ref=v3.5.0"
   manage_via_gitops = var.manage_via_gitops
   helm_config       = local.gateway_helm_config
   irsa_config       = null
