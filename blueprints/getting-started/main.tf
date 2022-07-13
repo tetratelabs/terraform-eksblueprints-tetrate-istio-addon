@@ -56,9 +56,9 @@ provider "helm" {
 }
 
 locals {
-  tenant             = "aws-blueprint-001"  # AWS account name or unique id for tenant
-  environment        = "preprod" # Environment area eg., preprod or prod
-  zone               = "dev"     # Environment with in one sub_tenant or business unit
+  tenant             = "aws-blueprint-001" # AWS account name or unique id for tenant
+  environment        = "preprod"           # Environment area eg., preprod or prod
+  zone               = "dev"               # Environment with in one sub_tenant or business unit
   kubernetes_version = "1.21"
 
   vpc_cidr     = "10.0.0.0/16"
@@ -119,7 +119,7 @@ module "aws_eks_accelerator_for_terraform" {
   managed_node_groups = {
     mg_4 = {
       node_group_name = "managed-ondemand"
-      instance_types  = local.instance_types 
+      instance_types  = local.instance_types
       min_size        = "2"
       subnet_ids      = module.aws_vpc.private_subnets
     }
