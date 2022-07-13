@@ -100,10 +100,11 @@ module "aws_vpc" {
 module "aws_eks_accelerator_for_terraform" {
   source = "github.com/aws-ia/terraform-aws-eks-blueprints"
 
-  tenant            = local.tenant
-  environment       = local.environment
-  zone              = local.zone
-  terraform_version = local.terraform_version
+  # tenant            = local.tenant
+  # environment       = local.environment
+  # zone              = local.zone
+  # terraform_version = local.terraform_version
+  cluster_name = local.cluster_name
 
   # EKS Cluster VPC and Subnet mandatory config
   vpc_id             = module.aws_vpc.vpc_id
