@@ -21,10 +21,6 @@ provider "aws" {
   region = local.region
 }
 
-data "aws_eks_cluster" "cluster" {
-  name = module.eks_blueprints.eks_cluster_id
-}
-
 data "aws_eks_cluster_auth" "cluster" {
   name = module.eks_blueprints.eks_cluster_id
 }
@@ -33,7 +29,7 @@ provider "kubernetes" {
   host                   = module.eks_blueprints.eks_cluster_endpoint
   cluster_ca_certificate = base64decode(module.eks_blueprints.eks_cluster_certificate_authority_data)
 
-token = data.aws_eks_cluster_auth.cluster.token
+  token = data.aws_eks_cluster_auth.cluster.token
 }
 
 provider "helm" {
@@ -99,8 +95,8 @@ module "eks_blueprints_kubernetes_addons" {
   enable_amazon_eks_kube_proxy = true
 
   # Add-ons
-  enable_metrics_server               = true
-  enable_cluster_autoscaler           = true
+  enable_metrics_server     = true
+  enable_cluster_autoscaler = true
 
   # Tetrate Istio Add-on
   enable_tetrate_istio = true
