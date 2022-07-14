@@ -21,29 +21,26 @@ provider "aws" {
   region = local.region
 }
 
+data "aws_eks_cluster" "cluster" {
+  name = module.eks_blueprints.eks_cluster_id
+}
+
+data "aws_eks_cluster_auth" "cluster" {
+  name = module.eks_blueprints.eks_cluster_id
+}
+
 provider "kubernetes" {
   host                   = module.eks_blueprints.eks_cluster_endpoint
   cluster_ca_certificate = base64decode(module.eks_blueprints.eks_cluster_certificate_authority_data)
 
-  exec {
-    api_version = "client.authentication.k8s.io/v1beta1"
-    command     = "aws"
-    # This requires the awscli to be installed locally where Terraform is executed
-    args = ["eks", "get-token", "--cluster-name", module.eks_blueprints.eks_cluster_id]
-  }
+token = data.aws_eks_cluster_auth.cluster.token
 }
 
 provider "helm" {
   kubernetes {
     host                   = module.eks_blueprints.eks_cluster_endpoint
     cluster_ca_certificate = base64decode(module.eks_blueprints.eks_cluster_certificate_authority_data)
-
-    exec {
-      api_version = "client.authentication.k8s.io/v1beta1"
-      command     = "aws"
-      # This requires the awscli to be installed locally where Terraform is executed
-      args = ["eks", "get-token", "--cluster-name", module.eks_blueprints.eks_cluster_id]
-    }
+    token                  = data.aws_eks_cluster_auth.cluster.token
   }
 }
 
@@ -71,7 +68,7 @@ module "eks_blueprints" {
   source = "github.com/aws-ia/terraform-aws-eks-blueprints"
 
   cluster_name    = local.cluster_name
-  cluster_version = "1.21"
+  cluster_version = "1.22"
 
   vpc_id             = module.vpc.vpc_id
   private_subnet_ids = module.vpc.private_subnets
@@ -102,10 +99,8 @@ module "eks_blueprints_kubernetes_addons" {
   enable_amazon_eks_kube_proxy = true
 
   # Add-ons
-  enable_aws_load_balancer_controller = true
   enable_metrics_server               = true
   enable_cluster_autoscaler           = true
-  enable_aws_cloudwatch_metrics       = true
 
   # Tetrate Istio Add-on
   enable_tetrate_istio = true
