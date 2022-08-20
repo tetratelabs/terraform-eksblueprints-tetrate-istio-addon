@@ -1,7 +1,7 @@
 # Copyright (c) Tetrate, Inc 2022 All Rights Reserved.
 
 locals {
-  default_version = coalesce(var.distribution_version, "1.12.2")
+  default_version = coalesce(var.distribution_version, "1.12.9")
 
   default_helm_config = {
     name                       = "undefined"
