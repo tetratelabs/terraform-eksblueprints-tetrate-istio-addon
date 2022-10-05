@@ -84,9 +84,6 @@ cd blueprints/getting-started
 terraform destroy --auto-approve
 ```
 
-<!--- BEGIN_TF_DOCS --->
-<!--- END_TF_DOCS --->
-
 ## Learn more
 
 Learn more about [Tetrate Istio Distro](https://istio.tetratelabs.io/).
