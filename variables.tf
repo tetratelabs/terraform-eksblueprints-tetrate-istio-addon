@@ -1,82 +1,72 @@
 # Copyright (c) Tetrate, Inc 2022 All Rights Reserved.
 
 variable "distribution" {
+  description = "Istio distribution"
   type        = string
   default     = "TID"
-  description = "Istio distribution"
 }
 
 variable "distribution_version" {
+  description = "Tetrate Istio Distro"
   type        = string
   default     = ""
-  description = "Istio version"
 }
 
 variable "install_base" {
+  description = "Install Istio `base` Helm Chart"
   type        = bool
   default     = true
-  description = "Install Istio `base` Helm Chart"
 }
 
 variable "install_cni" {
+  description = "Install Istio `cni` Helm Chart"
   type        = bool
   default     = true
-  description = "Install Istio `cni` Helm Chart"
 }
 
 variable "install_istiod" {
+  description = "Install Istio `istiod` Helm Chart"
   type        = bool
   default     = true
-  description = "Install Istio `istiod` Helm Chart"
 }
 
 variable "install_gateway" {
+  description = "Install Istio `gateway` Helm Chart"
   type        = bool
   default     = true
-  description = "Install Istio `gateway` Helm Chart"
 }
 
 variable "base_helm_config" {
+  description = "Istio `base` Helm Chart Configuration"
   type        = any
   default     = {}
-  description = "Istio `base` Helm Chart Configuration"
 }
 
 variable "cni_helm_config" {
+  description = "Istio `cni` Helm Chart Configuration"
   type        = any
   default     = {}
-  description = "Istio `cni` Helm Chart Configuration"
 }
 
 variable "istiod_helm_config" {
+  description = "Istio `istiod` Helm Chart Configuration"
   type        = any
   default     = {}
-  description = "Istio `istiod` Helm Chart Configuration"
 }
 
 variable "gateway_helm_config" {
+  description = "Istio `gateway` Helm Chart Configuration"
   type        = any
   default     = {}
-  description = "Istio `gateway` Helm Chart Configuration"
 }
 
 variable "manage_via_gitops" {
+  description = "Determines if the add-on should be managed via GitOps"
   type        = bool
   default     = false
-  description = "Determines if the add-on should be managed via GitOps."
 }
 
 variable "addon_context" {
-  type = object({
-    aws_caller_identity_account_id = string
-    aws_caller_identity_arn        = string
-    aws_eks_cluster_endpoint       = string
-    aws_partition_id               = string
-    aws_region_name                = string
-    eks_cluster_id                 = string
-    eks_oidc_issuer_url            = string
-    eks_oidc_provider_arn          = string
-    tags                           = map(string)
-  })
   description = "Input configuration for the addon"
+  type        = any
 }
