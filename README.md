@@ -40,7 +40,7 @@ No resources.
 | <a name="input_base_helm_config"></a> [base\_helm\_config](#input\_base\_helm\_config) | Istio `base` Helm Chart Configuration | `any` | `{}` | no |
 | <a name="input_cni_helm_config"></a> [cni\_helm\_config](#input\_cni\_helm\_config) | Istio `cni` Helm Chart Configuration | `any` | `{}` | no |
 | <a name="input_distribution"></a> [distribution](#input\_distribution) | Istio distribution | `string` | `"TID"` | no |
-| <a name="input_distribution_version"></a> [distribution\_version](#input\_distribution\_version) | Istio version | `string` | `""` | no |
+| <a name="input_distribution_version"></a> [distribution\_version](#input\_distribution\_version) | Tetrate Istio Distro | `string` | `""` | no |
 | <a name="input_gateway_helm_config"></a> [gateway\_helm\_config](#input\_gateway\_helm\_config) | Istio `gateway` Helm Chart Configuration | `any` | `{}` | no |
 | <a name="input_install_base"></a> [install\_base](#input\_install\_base) | Install Istio `base` Helm Chart | `bool` | `true` | no |
 | <a name="input_install_cni"></a> [install\_cni](#input\_install\_cni) | Install Istio `cni` Helm Chart | `bool` | `true` | no |

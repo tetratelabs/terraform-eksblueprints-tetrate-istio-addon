@@ -7,7 +7,7 @@ variable "distribution" {
 }
 
 variable "distribution_version" {
-  description = "Istio version"
+  description = "Tetrate Istio Distro"
   type        = string
   default     = ""
 }
