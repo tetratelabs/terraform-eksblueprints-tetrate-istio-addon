@@ -1,7 +1,7 @@
 # Copyright (c) Tetrate, Inc 2022 All Rights Reserved.
 
 module "base" {
-  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons/helm-addon?ref=v4.32.0"
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons/helm-addon?ref=v4"
 
   count = var.install_base ? 1 : 0
 
@@ -11,7 +11,7 @@ module "base" {
 }
 
 module "cni" {
-  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons/helm-addon?ref=v4.32.0"
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons/helm-addon?ref=v4"
 
   count = var.install_cni ? 1 : 0
 
@@ -23,7 +23,7 @@ module "cni" {
 }
 
 module "istiod" {
-  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons/helm-addon?ref=v4.32.0"
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons/helm-addon?ref=v4"
 
   count = var.install_istiod ? 1 : 0
 
@@ -35,7 +35,7 @@ module "istiod" {
 }
 
 module "gateway" {
-  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons/helm-addon?ref=v4.32.0"
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons/helm-addon?ref=v4"
 
   count = var.install_gateway ? 1 : 0
 
