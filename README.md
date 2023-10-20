@@ -43,7 +43,7 @@ No resources.
 | <a name="input_distribution_version"></a> [distribution\_version](#input\_distribution\_version) | Tetrate Istio Distro | `string` | `""` | no |
 | <a name="input_gateway_helm_config"></a> [gateway\_helm\_config](#input\_gateway\_helm\_config) | Istio `gateway` Helm Chart Configuration | `any` | `{}` | no |
 | <a name="input_install_base"></a> [install\_base](#input\_install\_base) | Install Istio `base` Helm Chart | `bool` | `true` | no |
-| <a name="input_install_cni"></a> [install\_cni](#input\_install\_cni) | Install Istio `cni` Helm Chart | `bool` | `true` | no |
+| <a name="input_install_cni"></a> [install\_cni](#input\_install\_cni) | Install Istio `cni` Helm Chart | `bool` | `false` | no |
 | <a name="input_install_gateway"></a> [install\_gateway](#input\_install\_gateway) | Install Istio `gateway` Helm Chart | `bool` | `true` | no |
 | <a name="input_install_istiod"></a> [install\_istiod](#input\_install\_istiod) | Install Istio `istiod` Helm Chart | `bool` | `true` | no |
 | <a name="input_istiod_helm_config"></a> [istiod\_helm\_config](#input\_istiod\_helm\_config) | Istio `istiod` Helm Chart Configuration | `any` | `{}` | no |
