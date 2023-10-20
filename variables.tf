@@ -21,7 +21,7 @@ variable "install_base" {
 variable "install_cni" {
   description = "Install Istio `cni` Helm Chart"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "install_istiod" {
