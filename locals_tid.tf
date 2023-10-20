@@ -9,13 +9,13 @@ locals {
     cni = tolist([yamlencode({
       "global" : {
         "hub" : "containers.istio.tetratelabs.com",
-        "tag" : "${lookup(var.cni_helm_config, "version", local.default_helm_config.version)}-tetratefips-v0",
+        "tag" : "${lookup(var.cni_helm_config, "version", local.default_helm_config.version)}-tetrate-v0",
       }
     })])
     istiod = tolist([yamlencode({
       "global" : {
         "hub" : "containers.istio.tetratelabs.com",
-        "tag" : "${lookup(var.istiod_helm_config, "version", local.default_helm_config.version)}-tetratefips-v0",
+        "tag" : "${lookup(var.istiod_helm_config, "version", local.default_helm_config.version)}-tetrate-v0",
       }
     })])
   }
