@@ -31,7 +31,7 @@ module "istiod" {
   helm_config       = local.istiod_helm_config
   addon_context     = var.addon_context
 
-  depends_on = [module.cni]
+  depends_on = [module.base]
 }
 
 module "gateway" {
